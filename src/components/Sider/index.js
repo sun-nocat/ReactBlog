@@ -14,14 +14,38 @@ const style = {
 const ROWstyle = {
         backgroundImage:`url(${background})`,
     backgroundSize:'cover',
-    height:'100%'
+	height:'100%',
+	position:'fixed',
+	width:'17%'
 };
 
 
 class Sider extends React.Component {
+
+	constructor(props){
+		super(props)
+		this.state = {
+			isFixed:true
+		}
+	}
+
 	render() {
+		console.log(this.props.isFixed)
+		if(this.props.isFixed){
+			var styles = ROWstyle
+			console.log('1')
+		}else{
+			console.log('2')
+
+			var styles = {
+				backgroundImage:`url(${background})`,
+				backgroundSize:'cover',
+				height:'100%',
+
+			}
+		}
 		return (
-				<Row type="flex" justify="center" style={ROWstyle}>
+				<Row type="flex" justify="center" style={styles}>
 					<Col style={style} >
                         <SiderTop></SiderTop>
                         <SiderList></SiderList>

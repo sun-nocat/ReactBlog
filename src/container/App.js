@@ -23,15 +23,16 @@ class App extends React.Component {
 				<Row>
 					<Col lg={{ span: 0, offset: 0 }}>
 						<Header />
+						<div style={{height:'50px'}}></div>
 					</Col>
 				</Row>
-				<Col xs={{ span: 0, offset: 0 }} lg={{ span: 3, offset: 0 }} style={height}>
-					<Sider />
+				<Col xs={{ span: 0, offset: 0 }} lg={{ span: 4, offset: 0 }} style={height}>
+					<Sider isFixed={true} />
 				</Col>
-				<Col xs={{ span: 22, offset: 1 }} lg={{ span: 16, offset: 1 }}>
+				<Col xs={{ span: 24, offset: 0 }} lg={{ span: 16, offset: 0 }}>
 					<Content />
 				</Col>
-				<Col xs={{ span: 22, offset: 1 }} lg={{ span: 4, offset: 0 }}>
+				<Col xs={{ span: 0, offset: 1 }} lg={{ span: 4, offset: 0 }}>
 					<Nav />
 				</Col>
 			</Row>

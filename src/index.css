@@ -1,10 +1,24 @@
-html{
+html {
   height: 100%
 }
 
-body{
-  height:100%
-}
-#root{
+body {
   height: 100%
+}
+
+#root {
+  height: 100%
+}
+
+.ant-card-head-title {
+  font-size: 1.2rem;
+  font-weight: 550;
+  line-height: 1.2;
+  color: #2e3135;
+}
+.ant-card-body{
+  padding-top: 15px!important;
+}
+.ant-statistic-content{
+  font-size: 16px!important
 }
