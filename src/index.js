@@ -12,16 +12,16 @@ import "antd/dist/antd.css";
  * 创建store
  */
 console.log('创建store')
-// const store = configStore();
+const store = configStore();
 
 function Index() {
     console.log('匹配路由')
 	return (
-		// <Provider store={store}>
+		<Provider store={store}>
 			<HashRouter>
 				<Route path="/" component={App} />
 			</HashRouter>
-		// </Provider> 
+	    </Provider> 
 	);
 }
 

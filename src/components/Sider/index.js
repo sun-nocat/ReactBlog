@@ -33,9 +33,7 @@ class Sider extends React.Component {
 		console.log(this.props.isFixed)
 		if(this.props.isFixed){
 			var styles = ROWstyle
-			console.log('1')
 		}else{
-			console.log('2')
 
 			var styles = {
 				backgroundImage:`url(${background})`,

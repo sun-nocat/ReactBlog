@@ -1,11 +1,13 @@
 import React from 'react';
 import { Row, Col } from 'antd';
+import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux';
 
 import Sider from '../components/Sider';
 import Content from '../components/Content';
 import Header from '../components/Header';
 import Nav from '../components/Nav';
-
+import { getArticle } from '../actions'
 
 
 const height={
@@ -15,9 +17,17 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
+		this.props.getArticle()
 	}
 
 	render() {
+
+		const {getArticle,article} = this.props
+		{
+			console.log('app.js------------')
+			// getArticle()
+		console.log(article)
+		}
 		return (
 			<Row style={height}>
 				<Row>
@@ -40,4 +50,17 @@ class App extends React.Component {
 	}
 }
 
-export default App;
+
+const mapStateToProps = (state) =>{
+	return{
+		article:state.article
+	}
+}
+
+const mapDispatchToProps = (dispatch) =>{
+	return{
+		getArticle: bindActionCreators(getArticle, dispatch)
+	}
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

@@ -21,8 +21,9 @@ class Content extends React.Component {
     clickCard(id){
         console.log('index')
         console.log(id)
+        console.log(this.props.data())
+        
         this.setState({id:id})
-    
 
     }
 
@@ -30,7 +31,7 @@ class Content extends React.Component {
         return (
             <div style={style}>
 
-                <CardItem  id={1} clickCard={this.clickCard} ></CardItem>
+                <CardItem  id={1} clickCard={this.clickCard}></CardItem>
                 <CardItem  id={2} clickCard={this.clickCard}></CardItem>
                 <CardItem  id={3} clickCard={this.clickCard}></CardItem>
                 <CardItem></CardItem>
