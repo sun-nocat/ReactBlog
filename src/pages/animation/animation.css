@@ -1,0 +1,42 @@
+.fa {
+    width: 500px;
+    height: 200px;
+    background-color: bisque;
+    overflow: hidden;
+    position: relative;
+}
+
+.son {
+    width: 500px;
+    height: 600px;
+    background-color: aqua;
+    position: relative;
+    top: -400px;
+    animation: myfirst 10s infinite;
+    animation-delay: 5s;
+    z-index: 2;
+
+
+}
+
+
+
+@keyframes myfirst
+{
+   0%{
+        top:-400px;
+    }
+    25%{
+        top:-200px;
+    }
+    50%{
+        top:-200px;
+    }
+    75%{
+        top:0px;
+    }
+    100%{
+        top:0px;
+    }
+
+}

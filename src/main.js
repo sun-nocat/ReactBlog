@@ -1,4 +1,3 @@
-
 /*
 * @Description: 项目入口文件
 * @Author: sunmingming
@@ -7,17 +6,18 @@
 */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Route } from 'react-router-dom';
 
 import App from './App';
+import Anmation from './pages/animation/animation.js';
+import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
+import 'antd/dist/antd.css';
 import './main.css';
 function Main() {
-    return (
-        <HashRouter>
-            <Route path="/" component={App} />
-        </HashRouter>
-    );
+	return (
+		<Router>
+			<Route path="/" component={Anmation} />
+		</Router>
+	);
 }
 
 ReactDOM.render(<Main />, document.getElementById('app'));
-            

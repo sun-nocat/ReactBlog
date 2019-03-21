@@ -34,7 +34,7 @@ module.exports = {
                 exclude:/(node_modules|bower_components)/,//屏蔽不需要处理的文件
                 loader: 'babel-loader'
             },{
-                test:/.css$/,
+                test:/\.css$/,
                 use:['style-loader', 'css-loader']
             }
         ]
