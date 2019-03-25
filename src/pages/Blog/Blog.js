@@ -3,17 +3,23 @@
  * @Description: 博客页面
  * @Email: sun_mingming@foxmail.com
  * @Date: 2019-03-23 09:50:33
- * @LastEditTime: 2019-03-24 23:40:45
+ * @LastEditTime: 2019-03-25 23:40:36
  */
 
 import React from 'react'
-import { Row, Col, Card, Breadcrumb, Icon } from 'antd';
+import { Row, Col, Card, Breadcrumb, Icon, Button ,Radio,Spin,Alert  } from 'antd';
 import components from './components'
 import classes from './Blog.css'
 
+
+
+
+const RadioButton = Radio.Button;
+const RadioGroup = Radio.Group;
 const height = {
     height: '100%'
 }
+const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 
 class Blog extends React.Component {
@@ -23,10 +29,12 @@ class Blog extends React.Component {
         this.getComponent = this.getComponent.bind(this)
         this.returnBlog = this.returnBlog.bind(this)
         this.isShow = this.isShow.bind(this)
+        this.handleSizeChange = this.handleSizeChange.bind(this)
 
         this.state = {
             isList: true,
-            isShow: true
+            isShow: true,
+            radio:'large'
         }
     }
 
@@ -45,9 +53,9 @@ class Blog extends React.Component {
         return <Component history={this.props.history} isList={this.state.isList} isShow={this.isShow} />;
     }
 
-    isShow(){
+    isShow() {
         console.log('ssssss')
-        this.setState({isShow:false})
+        this.setState({ isShow: false })
         this.setState({ isList: false })
 
     }
@@ -57,10 +65,14 @@ class Blog extends React.Component {
      * 点击Blog按钮
      */
     returnBlog() {
-        this.setState({ isList: false })
-        this.setState({isShow:true})
+        this.setState({ isList: true })
+        this.setState({ isShow: true })
     }
 
+    handleSizeChange(e){
+        console.log(e.target.value)
+        this.setState({radio:e.target.value})
+    }
 
     render() {
 
@@ -84,10 +96,17 @@ class Blog extends React.Component {
                 {
                     this.state.isShow ? <Row>
                         <Col lg={{ span: 24, offset: 0 }}>
-                            <div style={{ width: '100%', height: '50px', borderTop: 'solid 1px #eeeeee' }}>
-                                <div>
-                                    sss
-                            </div>
+                            <div style={{ width: '100%', height: '50px', borderTop: 'solid 1px #eeeeee',textAlign:'center',lineHeight:'60px'}}>
+                                <div style={{margin:'auto'}}>
+                                    <RadioGroup onChange={this.handleSizeChange} defaultValue={this.state.radio}>
+                                        <RadioButton value="large">最新</RadioButton>
+                                        <RadioButton value="default">前端</RadioButton>
+                                        <RadioButton value="small">后端</RadioButton>
+                                        <RadioButton value="small">算法</RadioButton>
+                                        <RadioButton value="small">其他</RadioButton>
+                                    </RadioGroup>
+                                    
+                                </div>
                             </div>
                         </Col>
                     </Row> : null
@@ -103,6 +122,7 @@ class Blog extends React.Component {
                     {
                         this.getComponent('Content')
                     }
+
                 </Col>
             </Row>
         )

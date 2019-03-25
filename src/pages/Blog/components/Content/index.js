@@ -25,15 +25,22 @@ class Content extends React.Component {
 
     //用户点击列表 
     clickCard(id) {
-        this.setState({isList:false})
         this.setState({ id: id })
-        console.log('cick')
         this.props.isShow()
+        this.setState({isList:false})
+
 
     }
 
-    componentWillReceiveProps(){
-        this.setState({isList:true})
+    //props发生变化的时候调用
+    componentWillReceiveProps(e){
+
+        if(e.isList){
+            this.setState({isList:true})
+
+        }else{
+            this.setState({isList:false})
+        }
     }
 
 
@@ -48,15 +55,7 @@ class Content extends React.Component {
                     <CardItem id={3} clickCard={this.clickCard}></CardItem>
                     <CardItem></CardItem>
                     <CardItem></CardItem>
-                    <CardItem></CardItem>
-                    <CardItem></CardItem>
-                    <CardItem></CardItem>
-                    <CardItem></CardItem>
-                    <CardItem></CardItem>
-                    <CardItem></CardItem>
-                    <CardItem></CardItem>
-                    <CardItem></CardItem>
-                    <CardItem></CardItem>
+
 
                 </div>
             )
