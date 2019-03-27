@@ -3,7 +3,7 @@
  * @Description: 博客页面
  * @Email: sun_mingming@foxmail.com
  * @Date: 2019-03-23 09:50:33
- * @LastEditTime: 2019-03-25 23:40:36
+ * @LastEditTime: 2019-03-27 15:54:30
  */
 
 import React from 'react'
@@ -11,6 +11,8 @@ import { Row, Col, Card, Breadcrumb, Icon, Button ,Radio,Spin,Alert  } from 'ant
 import components from './components'
 import classes from './Blog.css'
 
+import {connect} from 'react-redux'
+import {getArticle} from '../../redux/actions/blog'
 
 
 
@@ -74,6 +76,10 @@ class Blog extends React.Component {
         this.setState({radio:e.target.value})
     }
 
+    componentDidMount(){
+        this.props.getArticle()
+    }
+
     render() {
 
         return (
@@ -129,4 +135,15 @@ class Blog extends React.Component {
     }
 }
 
-export default Blog;
+//来自store中的数据
+const mapStateToProps = (state,ownProps)=>({
+    articleList:state.Blog.article
+})
+//来自acrion中的方法
+const mapDispatchToProps = {
+    getArticle
+}
+
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Blog);
