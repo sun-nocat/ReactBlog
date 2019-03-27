@@ -3,7 +3,7 @@
  * @Description: 博客页面
  * @Email: sun_mingming@foxmail.com
  * @Date: 2019-03-23 09:50:33
- * @LastEditTime: 2019-03-27 15:54:30
+ * @LastEditTime: 2019-03-27 17:29:20
  */
 
 import React from 'react'
@@ -12,7 +12,7 @@ import components from './components'
 import classes from './Blog.css'
 
 import {connect} from 'react-redux'
-import {getArticle} from '../../redux/actions/blog'
+import {getArticleList,getArticle} from '../../redux/actions/blog'
 
 
 
@@ -52,7 +52,8 @@ class Blog extends React.Component {
 
             }
         })
-        return <Component history={this.props.history} isList={this.state.isList} isShow={this.isShow} />;
+
+        return <Component article={this.props.article} getArticle={this.props.getArticle} articleList={this.props.articleList} history={this.props.history} isList={this.state.isList} isShow={this.isShow} />;
     }
 
     isShow() {
@@ -77,7 +78,7 @@ class Blog extends React.Component {
     }
 
     componentDidMount(){
-        this.props.getArticle()
+        this.props.getArticleList()
     }
 
     render() {
@@ -105,11 +106,11 @@ class Blog extends React.Component {
                             <div style={{ width: '100%', height: '50px', borderTop: 'solid 1px #eeeeee',textAlign:'center',lineHeight:'60px'}}>
                                 <div style={{margin:'auto'}}>
                                     <RadioGroup onChange={this.handleSizeChange} defaultValue={this.state.radio}>
-                                        <RadioButton value="large">最新</RadioButton>
-                                        <RadioButton value="default">前端</RadioButton>
-                                        <RadioButton value="small">后端</RadioButton>
-                                        <RadioButton value="small">算法</RadioButton>
-                                        <RadioButton value="small">其他</RadioButton>
+                                        <RadioButton value="new">最新</RadioButton>
+                                        <RadioButton value="first">前端</RadioButton>
+                                        <RadioButton value="end">后端</RadioButton>
+                                        <RadioButton value="code">算法</RadioButton>
+                                        <RadioButton value="other">其他</RadioButton>
                                     </RadioGroup>
                                     
                                 </div>
@@ -137,10 +138,12 @@ class Blog extends React.Component {
 
 //来自store中的数据
 const mapStateToProps = (state,ownProps)=>({
-    articleList:state.Blog.article
+    articleList:state.Blog.articleList,
+    article:state.Blog.article
 })
 //来自acrion中的方法
 const mapDispatchToProps = {
+    getArticleList,
     getArticle
 }
 

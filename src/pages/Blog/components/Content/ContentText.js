@@ -9,9 +9,11 @@ class ContentText extends React.Component{
     }
 
     render(){
+        console.log(this.props.article.content)
+        const txt = this.props.article.content
         return(
 
-            <div>contenttext</div>
+            <div dangerouslySetInnerHTML={{__html:txt}}></div>
         )
     }
 }

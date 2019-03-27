@@ -5,70 +5,64 @@
  * @Date: 2019-03-23 10:14:19
  */
 
-import React from 'react'
-import CardItem from './CardItem'
-import ContentText from './ContentText'
-import { withRouter } from 'react-router-dom'
-
+import React from 'react';
+import CardItem from './CardItem';
+import ContentText from './ContentText';
+import { withRouter } from 'react-router-dom';
 
 class Content extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            id: '',
-            isList: true,
-        }
+	constructor(props) {
+		super(props);
+		this.state = {
+			id: '',
+			isList: true
+		};
 
-        this.clickCard = this.clickCard.bind(this)
-    }
+		this.clickCard = this.clickCard.bind(this);
+	}
 
+	//用户点击列表
+	clickCard(id) {
+		this.setState({ id: id });
+		this.props.isShow();
+        this.setState({ isList: false });
+        
+        console.log(id)
+        console.log(this.props.getArticle)
+        this.props.getArticle(id)
+        //用户点击标题，=>获取数据 =>将数传递给ContentText组件
+	}
 
-    //用户点击列表 
-    clickCard(id) {
-        this.setState({ id: id })
-        this.props.isShow()
-        this.setState({isList:false})
+	//props发生变化的时候调用
+	componentWillReceiveProps(e) {
+		if (e.isList) {
+			this.setState({ isList: true });
+		} else {
+			this.setState({ isList: false });
+		}
+	}
 
+	render() {
+		const isList = this.state.isList;
 
-    }
-
-    //props发生变化的时候调用
-    componentWillReceiveProps(e){
-
-        if(e.isList){
-            this.setState({isList:true})
-
-        }else{
-            this.setState({isList:false})
-        }
-    }
-
-
-    render() {
-        const isList = this.state.isList
-
-        if (isList) {
-            return (
-                <div>
-                    <CardItem id={1} clickCard={this.clickCard}></CardItem>
-                    <CardItem id={2} clickCard={this.clickCard}></CardItem>
-                    <CardItem id={3} clickCard={this.clickCard}></CardItem>
-                    <CardItem></CardItem>
-                    <CardItem></CardItem>
-
-
-                </div>
-            )
-        } else{
-
-            return(
-                <ContentText/>
-            )
-        }
-
-
-    }
+		const articleList = this.props.articleList.data;
+        console.log(this.props.article);
+        
+        var _this = this
+		if (isList) {
+			return (
+				<div>
+                    
+					{articleList &&
+						articleList.map(function(item, index) {
+							return <CardItem  id={index} key={index} clickCard={_this.clickCard} data={item} />;
+						})}
+				</div>
+			);
+		} else {
+			return <ContentText article = {_this.props.article} />;
+		}
+	}
 }
-
 
 export default Content;

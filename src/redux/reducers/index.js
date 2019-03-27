@@ -12,7 +12,8 @@ import Blog from './blog';
 //初始化的数据
 export let initialState = {
 	Blog: {
-		article: ''
+        articleList: '', //文章列表
+        article:'',//文章内容
 	}
 };
 

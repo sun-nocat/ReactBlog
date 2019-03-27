@@ -5,22 +5,24 @@
  * @Date: 2019-03-27 13:30:57
  */
 import {
-    GET_ARTICLE_SUCCESS,
-    GET_ARTICLE_LOADING
+    GET_ARTICLE_LIST_SUCCESS,
+    GET_ARTICLE_LIST_LOADING,
+    GET_ARTICLE_SUCCESS
 } from '../actions'
 
  function Blog(state={},action){
     switch (action.type) {
+        case GET_ARTICLE_LIST_SUCCESS:
+            return {
+                ...state,
+                articleList: action.payload
+            }
         case GET_ARTICLE_SUCCESS:
             return {
                 ...state,
-                article: action.payload
+                article:action.payload
             }
-        case GET_ARTICLE_LOADING:
-        return {
-            ...state,
-            article: action.payload
-        }
+
 
         default:
             return state

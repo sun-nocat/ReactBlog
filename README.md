@@ -22,6 +22,7 @@
     }
 ]]
 ~~~
+6. 使用ref不能讲html字符串innerhtml到页面上。需要使用react中提供的`<div dangerouslySetInnerHTML={{__html:txt}}></div>`去完成
 
 
 
