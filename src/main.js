@@ -18,6 +18,7 @@ import 'antd/dist/antd.css';
 import './main.css';
 import store from './redux';
 
+
 function Main() {
 	return (
 		<Provider store={store}>
@@ -25,7 +26,8 @@ function Main() {
 				<Switch>
 					<Route exact path="/" component={App} />
 					<Route path="/Blog" component={Blog} />>
-					<Route path="/animation" component={animation} />>
+					<Route path="/animation" component={animation} />
+
 				</Switch>
 			</HashRouter>
 		</Provider>

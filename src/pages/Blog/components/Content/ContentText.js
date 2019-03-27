@@ -1,5 +1,6 @@
 import React from 'react';
-import {Spin,Alert} from 'antd'
+import Spin from '../../../../components/spin'
+
 class ContentText extends React.Component {
 	constructor(props) {
 		super(props);
@@ -14,13 +15,7 @@ class ContentText extends React.Component {
 		} else {
             console.log('======================')
 
-            return   (<Spin tip="Loading...">
-            <Alert
-              message="Alert message title"
-              description="Further details about the context of this alert."
-              type="info"
-            />
-          </Spin>)
+            return   (<Spin/>)
 		}
 	}
 }

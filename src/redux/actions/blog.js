@@ -48,10 +48,10 @@ export function getArticleSuccess(data) {
 
 
 //获取文章列表的函数
-export function getArticleList() {
+export function getArticleList(label) {
     return async function (dispatch) {
         try {
-            let response = await fetch('http://sun-nocat.xyz/get/articles')
+            let response = await fetch(`http://127.0.0.1:8000/get/articlesByClass?label=${label}`)
             let data = await response.json()
 
             dispatch(getArticleListSuccess(data))
@@ -65,7 +65,7 @@ export function getArticleList() {
 export function getArticle(id) {
     return async function (dispatch) {
         try {
-            let res = await fetch(`http://sun-nocat.xyz/get/article?id=${id}`)
+            let res = await fetch(`http://127.0.0.1:8000/get/article?id=${id}`)
             let data = await res.json()
             console.log(data)
 

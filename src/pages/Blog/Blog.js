@@ -3,16 +3,16 @@
  * @Description: 博客页面
  * @Email: sun_mingming@foxmail.com
  * @Date: 2019-03-23 09:50:33
- * @LastEditTime: 2019-03-27 17:53:56
+ * @LastEditTime: 2019-03-27 22:37:23
  */
 
 import React from 'react'
-import { Row, Col, Card, Breadcrumb, Icon, Button ,Radio,Spin,Alert  } from 'antd';
+import { Row, Col, Card, Breadcrumb, Icon, Button, Radio, Spin, Alert, BackTop } from 'antd';
 import components from './components'
 import classes from './Blog.css'
 
-import {connect} from 'react-redux'
-import {getArticleList,getArticle,delArticle} from '../../redux/actions/blog'
+import { connect } from 'react-redux'
+import { getArticleList, getArticle, delArticle } from '../../redux/actions/blog'
 
 
 
@@ -36,7 +36,7 @@ class Blog extends React.Component {
         this.state = {
             isList: true,
             isShow: true,
-            radio:'large'
+            radio: 'new' //用户选择的类型
         }
     }
 
@@ -71,17 +71,20 @@ class Blog extends React.Component {
         this.props.delArticle()
         this.setState({ isList: true })
         this.setState({ isShow: true })
-    
+
 
     }
 
-    handleSizeChange(e){
+    handleSizeChange(e) {
         console.log(e.target.value)
-        this.setState({radio:e.target.value})
+        this.props.getArticleList(e.target.value)
+
+        this.setState({ radio: e.target.value })
+
     }
 
-    componentDidMount(){
-        this.props.getArticleList()
+    componentDidMount() {
+        this.props.getArticleList(this.state.radio)
     }
 
     render() {
@@ -100,14 +103,18 @@ class Blog extends React.Component {
 
                         <div style={{ textAlign: 'center', lineHeight: '50px', fontSize: '18px', fontWeight: '700', color: 'black' }}>
                             不吃鱼的猫</div>
+                        <div>
+                            <BackTop />
+                        </div>
 
                     </Col>
+
                 </Row>
                 {
                     this.state.isShow ? <Row>
                         <Col lg={{ span: 24, offset: 0 }}>
-                            <div style={{ width: '100%', height: '50px', borderTop: 'solid 1px #eeeeee',textAlign:'center',lineHeight:'60px'}}>
-                                <div style={{margin:'auto'}}>
+                            <div style={{ width: '100%', height: '50px', borderTop: 'solid 1px #eeeeee', textAlign: 'center', lineHeight: '60px' }}>
+                                <div style={{ margin: 'auto' }}>
                                     <RadioGroup onChange={this.handleSizeChange} defaultValue={this.state.radio}>
                                         <RadioButton value="new">最新</RadioButton>
                                         <RadioButton value="first">前端</RadioButton>
@@ -115,7 +122,7 @@ class Blog extends React.Component {
                                         <RadioButton value="code">算法</RadioButton>
                                         <RadioButton value="other">其他</RadioButton>
                                     </RadioGroup>
-                                    
+
                                 </div>
                             </div>
                         </Col>
@@ -140,9 +147,9 @@ class Blog extends React.Component {
 }
 
 //来自store中的数据
-const mapStateToProps = (state,ownProps)=>({
-    articleList:state.Blog.articleList,
-    article:state.Blog.article
+const mapStateToProps = (state, ownProps) => ({
+    articleList: state.Blog.articleList,
+    article: state.Blog.article
 })
 //来自acrion中的方法
 const mapDispatchToProps = {
@@ -153,4 +160,4 @@ const mapDispatchToProps = {
 
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Blog);
+export default connect(mapStateToProps, mapDispatchToProps)(Blog);
