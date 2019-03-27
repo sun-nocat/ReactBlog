@@ -3,7 +3,7 @@
  * @Description: 博客页面
  * @Email: sun_mingming@foxmail.com
  * @Date: 2019-03-23 09:50:33
- * @LastEditTime: 2019-03-27 17:29:20
+ * @LastEditTime: 2019-03-27 17:53:56
  */
 
 import React from 'react'
@@ -12,7 +12,7 @@ import components from './components'
 import classes from './Blog.css'
 
 import {connect} from 'react-redux'
-import {getArticleList,getArticle} from '../../redux/actions/blog'
+import {getArticleList,getArticle,delArticle} from '../../redux/actions/blog'
 
 
 
@@ -65,11 +65,14 @@ class Blog extends React.Component {
 
 
     /**
-     * 点击Blog按钮
+     * 点击Blog按钮  //清除Blog.article
      */
     returnBlog() {
+        this.props.delArticle()
         this.setState({ isList: true })
         this.setState({ isShow: true })
+    
+
     }
 
     handleSizeChange(e){
@@ -144,7 +147,8 @@ const mapStateToProps = (state,ownProps)=>({
 //来自acrion中的方法
 const mapDispatchToProps = {
     getArticleList,
-    getArticle
+    getArticle,
+    delArticle
 }
 
 
