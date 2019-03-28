@@ -10,7 +10,6 @@ import { Provider } from 'react-redux';
 
 import App from './App';
 import animation from './pages/animation';
-import Home from './pages/Home';
 import Blog from './pages/Blog';
 
 import { Link, Route, Switch, HashRouter, hashHistory } from 'react-router-dom';
