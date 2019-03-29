@@ -42,7 +42,9 @@ class Blog extends React.Component {
 
 
 
-
+    /**
+     * 根据参数，返回组件 
+     */
     getComponent(name) {
 
         let Component = ''

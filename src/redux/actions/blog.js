@@ -51,7 +51,7 @@ export function getArticleSuccess(data) {
 export function getArticleList(label) {
     return async function (dispatch) {
         try {
-            let response = await fetch(`http://127.0.0.1:8000/get/articlesByClass?label=${label}`)
+            let response = await fetch(`http://sun-nocat.xyz/get/articlesByClass?label=${label}`)
             let data = await response.json()
 
             dispatch(getArticleListSuccess(data))
@@ -65,7 +65,7 @@ export function getArticleList(label) {
 export function getArticle(id) {
     return async function (dispatch) {
         try {
-            let res = await fetch(`http://127.0.0.1:8000/get/article?id=${id}`)
+            let res = await fetch(`http://sun-nocat.xyz/get/article?id=${id}`)
             let data = await res.json()
             console.log(data)
 

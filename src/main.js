@@ -17,7 +17,6 @@ import 'antd/dist/antd.css';
 import './main.css';
 import store from './redux';
 
-
 function Main() {
 	return (
 		<Provider store={store}>
@@ -32,5 +31,7 @@ function Main() {
 		</Provider>
 	);
 }
+
+
 
 ReactDOM.render(<Main />, document.getElementById('app'));

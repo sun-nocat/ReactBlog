@@ -8,13 +8,12 @@
 import React from 'react';
 import CardItem from './CardItem';
 import ContentText from './ContentText';
-import { withRouter } from 'react-router-dom';
 
 class Content extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			id: '',
+			item: '',
 			isList: true
 		};
 
@@ -22,14 +21,13 @@ class Content extends React.Component {
 	}
 
 	//用户点击列表
-	clickCard(id) {
-		this.setState({ id: id });
+	clickCard(item) {
+		this.setState({ item: item });
 		this.props.isShow();
         this.setState({ isList: false });
         
-        console.log(id)
         console.log(this.props.getArticle)
-        this.props.getArticle(id)
+        this.props.getArticle(item.id)
         //用户点击标题，=>获取数据 =>将数传递给ContentText组件
 	}
 
@@ -60,7 +58,7 @@ class Content extends React.Component {
 				</div>
 			);
 		} else {
-			return <ContentText article = {_this.props.article} />;
+			return <ContentText item={_this.state.item} article = {_this.props.article} />;
 		}
 	}
 }
