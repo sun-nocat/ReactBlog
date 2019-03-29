@@ -11,8 +11,11 @@ const label = {
 class ContentText extends React.Component {
 	constructor(props) {
 		super(props);
+		this.resize =  this.resize.bind(this)
+		this.state = {
+			clientWidth:''
+		}
 	}
-
 	/**
 	 * 过滤数据
 	 * @param {string} txt 未过滤数据
@@ -21,6 +24,21 @@ class ContentText extends React.Component {
 		return txt.replace(/width:\d+px/g, `width:100%`).replace(/<pre/g, `<pre style="background:#f6f7f8"`).replace(/<img\s/g, `<img style="width:100%"`)
 	}
 
+	resize(){
+		this.setState({clientWidth:document.body.clientWidth})
+	}
+
+	componentDidMount(){
+		this.sereenChange()
+	}
+	componentWillUnmount(){
+		window.removeEventListener('resize',this.resize);
+
+	}
+
+	sereenChange(){
+		window.addEventListener('resize',this.resize)
+	}
 	render() {
 		console.log(this.props.article.title)
 		console.log(this.props.item.time.split(" ")[0])
