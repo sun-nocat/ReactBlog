@@ -3,16 +3,17 @@
  * @Description: 博客页面
  * @Email: sun_mingming@foxmail.com
  * @Date: 2019-03-23 09:50:33
- * @LastEditTime: 2019-03-27 22:37:23
+ * @LastEditTime: 2019-03-31 15:58:16
  */
 
 import React from 'react'
-import { Row, Col, Card, Breadcrumb, Icon, Button, Radio, Spin, Alert, BackTop } from 'antd';
+import { Row, Col, Card, Breadcrumb, Icon, Empty, Button, Radio, Spin, Alert, BackTop, PageHeader } from 'antd';
 import components from './components'
 import classes from './Blog.css'
 
 import { connect } from 'react-redux'
-import { getArticleList, getArticle, delArticle } from '../../redux/actions/blog'
+import { getArticleList, getArticle, delArticle, delArticleList } from '../../redux/actions/blog'
+import Spins from '../../components/spin';
 
 
 
@@ -36,6 +37,7 @@ class Blog extends React.Component {
         this.state = {
             isList: true,
             isShow: true,
+            title: '',
             radio: 'new' //用户选择的类型
         }
     }
@@ -60,8 +62,18 @@ class Blog extends React.Component {
 
     isShow() {
         console.log('ssssss')
-        this.setState({ isShow: false })
-        this.setState({ isList: false })
+
+        if (this.state.isShow) {
+            this.setState({ isShow: false })
+            this.setState({ isList: false })
+
+        } else {
+            this.props.delArticle()
+
+            this.setState({ isShow: true })
+            this.setState({ isList: true })
+        }
+
 
     }
 
@@ -71,6 +83,7 @@ class Blog extends React.Component {
      */
     returnBlog() {
         this.props.delArticle()
+        this.props.history.replace('/Blog')
         this.setState({ isList: true })
         this.setState({ isShow: true })
 
@@ -87,6 +100,28 @@ class Blog extends React.Component {
 
     componentDidMount() {
         this.props.getArticleList(this.state.radio)
+        this.changeTitle()
+        var _this = this
+        //设置监听路由
+        this.props.history.listen(() => {
+            console.log('路由改变')
+            _this.changeTitle()
+        })
+    }
+
+    componentWillUnmount() {
+        this.props.delArticleList()
+
+        
+ }
+    //设置返回标题
+    changeTitle() {
+        if (this.props.history.location.pathname == '/Blog') {
+            this.setState({ title: '文章列表' })
+            // this.props.isShow()
+        } else if (this.props.history.location.pathname == '/Blog/item') {
+            this.setState({ title: "文章详情页" })
+        }
     }
 
     render() {
@@ -95,18 +130,26 @@ class Blog extends React.Component {
             <Row className={classes.main}>
                 {/* 移动端下的左侧菜单*/}
                 <Row style={{ height: '50px' }}>
-                    <Col lg={{ span: 0, offset: 0 }} xs={{ span: 8 }}>
-                        <Breadcrumb style={{ lineHeight: '50px', }}>
-                            <Breadcrumb.Item><a href="/#">Home</a></Breadcrumb.Item>
-                            <Breadcrumb.Item onClick={() => { this.returnBlog() }} style={{ cursor: 'pointer' }}>Blog</Breadcrumb.Item>
-                        </Breadcrumb>
+                    <Col lg={{ span: 12, offset: 6 }} xs={{ span: 24 }}>
+                        <PageHeader
+                            onBack={() => this.props.history.goBack()}
+                            title={this.state.title}
+                            // subTitle="This is a subtitle"
+                            style={{
+                                left: "-20px", position: 'fixed', width: '110%', zIndex: '2'
+                            }}
+                        />
+                        <BackTop />
+                        {/* <Spin style={{position:'fixed',zIndex:2,top:'20px',right:'20px'}} /> */}
+
+
                     </Col>
                     <Col lg={{ span: 0, offset: 0 }} xs={{ span: 8 }}>
 
                         <div style={{ textAlign: 'center', lineHeight: '50px', fontSize: '18px', fontWeight: '700', color: 'black' }}>
-                            不吃鱼的猫</div>
+                            {/* 不吃鱼的猫 */}
+                        </div>
                         <div>
-                            <BackTop />
                         </div>
 
                     </Col>
@@ -123,6 +166,7 @@ class Blog extends React.Component {
                                         <RadioButton value="end">后端</RadioButton>
                                         <RadioButton value="code">算法</RadioButton>
                                         <RadioButton value="other">其他</RadioButton>
+
                                     </RadioGroup>
 
                                 </div>
@@ -132,14 +176,12 @@ class Blog extends React.Component {
 
                 }
 
-                <Col xs={{ span: 0, offset: 0 }} lg={{ span: 5, offset: 1 }} style={height}>
-                    {
-                        this.getComponent('Sider')
-                    }
-                </Col>
-                <Col xs={{ span: 24, offset: 0 }} lg={{ span: 17, offset: 0 }}>
+                <Col xs={{ span: 24, offset: 0 }} lg={{ span: 12, offset: 6 }}>
                     {
                         this.getComponent('Content')
+                    }
+                    {
+                        this.props.articleList.status === '0' && (<Empty />)
                     }
 
                 </Col>
@@ -157,7 +199,8 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = {
     getArticleList,
     getArticle,
-    delArticle
+    delArticle,
+    delArticleList
 }
 
 

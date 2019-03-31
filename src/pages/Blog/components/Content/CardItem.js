@@ -41,6 +41,7 @@ function CardItem(props) {
     let key = 10;
 
     return (
+        
         <div style={{ paddingLeft: '10px', paddingRight: '10px', paddingTop: '10px' }} >
             <Card
                 style={{ width: '100%', height: '50px', padding: '16px', background: '#f5f6f7' }}
@@ -65,7 +66,7 @@ function CardItem(props) {
                         }
 
                     </div>
-                    <div style={{ position: 'relative', left: '80%', top: '-20px' }}><Tag color="blue"><Icon type="contacts" /> {props.data.time.split(" ")[0]}</Tag></div>
+                    <div style={{ position: 'relative', left: '80%', top: '-20px',width:'0px' }}><Tag color="blue"><Icon type="contacts" /> {props.data.time.split(" ")[0]}</Tag></div>
 
                 </div>
             </Card>

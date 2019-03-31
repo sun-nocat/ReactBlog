@@ -8,7 +8,8 @@ import {
     GET_ARTICLE_LIST_SUCCESS,
     GET_ARTICLE_LIST_LOADING,
     GET_ARTICLE_SUCCESS,
-    DEL_ARTICLE
+    DEL_ARTICLE,
+    DEL_ARTICLE_LIST
 } from '../actions'
 
  function Blog(state={},action){
@@ -27,6 +28,11 @@ import {
             return {
                 ...state,
                 article:action.payload
+            }
+        case DEL_ARTICLE_LIST:
+            return {
+                ...state,
+                articleList:action.payload
             }
 
 

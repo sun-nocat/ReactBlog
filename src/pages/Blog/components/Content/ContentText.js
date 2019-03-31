@@ -1,7 +1,7 @@
 import React from 'react';
 import Spin from '../../../../components/spin'
 import { Icon, Tag } from 'antd'
-
+import classes from  './index.css'
 const label = {
 	'first': '前端',
 	'end': '后端',
@@ -21,7 +21,7 @@ class ContentText extends React.Component {
 	 * @param {string} txt 未过滤数据
 	 */
 	change(txt) {
-		return txt.replace(/width:\d+px/g, `width:100%`).replace(/<pre/g, `<pre style="background:#f6f7f8"`).replace(/<img\s/g, `<img style="width:100%"`)
+		return txt.replace(/width:\d+px/g, `width:100%`).replace(/<pre/g, `<pre style="background:#f6f7f8"`).replace(/<img\s/g, `<img style="width:100%"`).replace(/style="/g, `style="width:100%;overflow:scroll;`)
 	}
 
 	resize(){
@@ -30,6 +30,8 @@ class ContentText extends React.Component {
 
 	componentDidMount(){
 		this.sereenChange()
+
+		
 	}
 	componentWillUnmount(){
 		window.removeEventListener('resize',this.resize);
@@ -42,12 +44,13 @@ class ContentText extends React.Component {
 	render() {
 		console.log(this.props.article.title)
 		console.log(this.props.item.time.split(" ")[0])
+		var back = this.props
 		const txt = this.props.article.content
 		if (txt) {
 			return (
 				<div style={{ padding: '1rem' }}>
 					<div>
-						<h1 style={{ fontWeight: 700, lineHeight: 1.5 }}>
+						<h1 style={{ fontWeight: 700, lineHeight: 1.5,padding:'10px',color:'#fc550e',borderBottom:'solid 1px #cccccc'}}>
 							{this.props.article.title}
 						</h1>
 						<div style={{width:'100%',height:'50px'}}>
@@ -56,14 +59,13 @@ class ContentText extends React.Component {
 								<Tag color="geekblue"><Icon type="tag" /> {label[this.props.article.label]}</Tag>
 							</div>
 						</div>
-
 						<div dangerouslySetInnerHTML={{ __html: this.change(txt) }} />;
 					</div>
 				</div>
 			)
 
 
-		} else {
+		}else{
 			console.log('======================')
 
 			return (<Spin />)

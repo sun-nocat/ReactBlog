@@ -25,8 +25,7 @@ class Content extends React.Component {
 		this.setState({ item: item });
 		this.props.isShow();
         this.setState({ isList: false });
-        
-        console.log(this.props.getArticle)
+        this.props.history.push('/Blog/item')
         this.props.getArticle(item.id)
         //用户点击标题，=>获取数据 =>将数传递给ContentText组件
 	}
@@ -40,11 +39,29 @@ class Content extends React.Component {
 		}
 	}
 
+	back(){
+		this.setState({ isList: true });
+	}
+
+	componentDidMount(){
+		var _this = this
+		this.props.history.listen(()=>{
+			console.log('sss')
+
+			if(_this.props.history.location.pathname == '/Blog'){
+				this.setState({ isList: true })
+				this.props.isShow()
+			}
+		})
+	}
+
 	render() {
 		const isList = this.state.isList;
 
 		const articleList = this.props.articleList.data;
-        console.log(this.props.article);
+		console.log(this.props.article);
+		console.log(this.props.history)
+
         
         var _this = this
 		if (isList) {
@@ -58,7 +75,7 @@ class Content extends React.Component {
 				</div>
 			);
 		} else {
-			return <ContentText item={_this.state.item} article = {_this.props.article} />;
+			return <ContentText history= {this.props.history} item={_this.state.item} article = {_this.props.article} />;
 		}
 	}
 }

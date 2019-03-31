@@ -11,6 +11,10 @@ import { Provider } from 'react-redux';
 import App from './App';
 import animation from './pages/animation';
 import Blog from './pages/Blog';
+import List from './pages/Life'
+import Work from './pages/Work'
+import About from './pages/About'
+import LifeItem from './pages/Life/components/LifeItem'
 
 import { Link, Route, Switch, HashRouter, hashHistory } from 'react-router-dom';
 import 'antd/dist/antd.css';
@@ -23,8 +27,11 @@ function Main() {
 			<HashRouter history={hashHistory}>
 				<Switch>
 					<Route exact path="/" component={App} />
-					<Route path="/Blog" component={Blog} />>
-					<Route path="/animation" component={animation} />
+					<Route path="/Blog" component={Blog} />
+					<Route exact path="/Life" component={List}/>
+					<Route exact path="/Life/item" component={LifeItem}/>
+					<Route path="/Work" component={Work} />
+					<Route path="/About" component={About} />
 
 				</Switch>
 			</HashRouter>

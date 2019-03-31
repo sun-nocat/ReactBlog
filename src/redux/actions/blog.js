@@ -9,7 +9,8 @@ import {
     GET_ARTICLE_LIST_ERROR,
     GET_ARTICLE_LIST_LOADING,
     GET_ARTICLE_SUCCESS,
-    DEL_ARTICLE
+    DEL_ARTICLE,
+    DEL_ARTICLE_LIST
 } from './index'
 
 //获取数据成功
@@ -83,7 +84,18 @@ export function delArticle(dispatch) {
     return function(dispatch) {
         dispatch({
             type:DEL_ARTICLE,
-            payload: ''
+            payload: true
+        })
+    }
+}
+
+//删除articleList中的内容
+
+export function delArticleList(dispatch) {
+    return function(dispatch) {
+        dispatch({
+            type:DEL_ARTICLE_LIST,
+            payload: true
         })
     }
 }

@@ -9,7 +9,7 @@ import { Spin, Icon } from 'antd';
 
  function Spins(){
 
-    return <Icon type="loading" style={{ fontSize: 24,position:'fixed',right:'14px',color:'#006eff',top:'8px'}} spin />;
+    return <Icon type="loading" style={{ fontSize: 24,position:'fixed',right:'14px',color:'#006eff',top:'10px',zIndex:3}} spin />;
 }
 
 

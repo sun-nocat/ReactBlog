@@ -11,7 +11,7 @@
 
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
-const OpenBrewserPlugin = require('open-browser-webpack-plugin');
+// const OpenBrewserPlugin = require('open-browser-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -35,9 +35,9 @@ module.exports = merge(baseWebpackConfig, {
         // 热更新相关
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new OpenBrewserPlugin({
-            url:'http://localhost:8080'
-        })
+        // new OpenBrewserPlugin({
+        //     url:'http://localhost:8080'
+        // })
 
     ],
     optimization: {

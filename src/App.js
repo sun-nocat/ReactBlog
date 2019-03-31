@@ -8,8 +8,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './pages/Home'
 
-function App() {
-	return <Home style={{height:'100%'}}></Home>
+function App(props) {
+	return <Home history={props.history} style={{height:'100%'}}></Home>
 }
 
 export default App;
