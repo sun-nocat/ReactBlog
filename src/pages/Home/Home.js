@@ -40,7 +40,7 @@ class Home extends React.Component {
 
             _this.props.history.push(lists[id])
 
-        }, 500);
+        }, 300);
 
 
 

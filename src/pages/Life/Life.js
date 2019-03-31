@@ -58,7 +58,7 @@ class Life extends React.Component {
                                 this.props.articleList.data.map((item)=>{
                                     return (
                                         <div style={{fontSize:'18px',lineHeight:'30px',overflow:'hidden'}}>
-                                            <Link to={{pathname:'/Life/item',state:{id:item.id}}}>{item.title}</Link>
+                                            <Link to={{pathname:'/Life/item',state:{id:item.id,title:'生活'}}}>{item.title}</Link>
                                         </div>
                                     )
                                 })
