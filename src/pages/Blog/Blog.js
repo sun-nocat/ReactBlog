@@ -7,13 +7,12 @@
  */
 
 import React from 'react'
-import { Row, Col, Card, Breadcrumb, Icon, Empty, Button, Radio, Spin, Alert, BackTop, PageHeader } from 'antd';
+import { Row, Col, Icon, Empty,  Radio, BackTop, PageHeader } from 'antd';
 import components from './components'
 import classes from './Blog.css'
 
 import { connect } from 'react-redux'
 import { getArticleList, getArticle, delArticle, delArticleList } from '../../redux/actions/blog'
-import Spins from '../../components/spin';
 
 
 
@@ -140,7 +139,6 @@ class Blog extends React.Component {
                             }}
                         />
                         <BackTop />
-                        {/* <Spin style={{position:'fixed',zIndex:2,top:'20px',right:'20px'}} /> */}
 
 
                     </Col>

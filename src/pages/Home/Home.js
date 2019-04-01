@@ -7,11 +7,6 @@
  */
 
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { Rate } from 'antd';
-
-import Animation from '../animation'
-import Blog from '../Blog'
 import classes from './Home.css'
 
 class Home extends React.Component {

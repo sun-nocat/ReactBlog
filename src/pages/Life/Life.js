@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, PageHeader, BackTop, Empty, Collapse } from 'antd';
+import { Row, Col, PageHeader, BackTop, Collapse } from 'antd';
 import classes from './life.css'
 import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -63,27 +63,13 @@ class Life extends React.Component {
                                     )
                                 })
                             }
-                            
                         </Panel>
-                        {/* <Panel header="This is panel header 2" key="2">
-                            <p>dsadasdasd</p>
-                        </Panel>
-                        <Panel header="This is panel header 3" key="3">
-                            <p>dsdasdsad</p>
-                        </Panel> */}
                     </Collapse>
-
-
-
                 </Col>
             </Row>
-
         )
     }
 }
-
-
-
 //来自store中的数据
 const mapStateToProps = (state, ownProps) => ({
     articleList: state.Blog.articleList,

@@ -5,7 +5,6 @@
  * @Date: 2019-03-23 10:14:31
  */
 import Content from './Content'
-import Sider from './Sider'
 
 
 
@@ -16,10 +15,7 @@ const components = [
         component:Content
     },
 
-    {
-        name:'Sider',
-        component:Sider
-    },
+
 ]
 
 

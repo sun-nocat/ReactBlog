@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, PageHeader, BackTop, Empty, Timeline, Tag } from 'antd';
+import { Row, Col, PageHeader, BackTop, Timeline, Tag } from 'antd';
 import { Link } from 'react-router-dom'
 import classes from './Work.css'
 class Work extends React.Component {
@@ -61,11 +61,18 @@ class Work extends React.Component {
                             <Timeline.Item><div>2018-10  <Tag color="geekblue">后端开发</Tag></div>学校换新教务系统了，之前公众号查成绩接口的接口需要重新开发。使用Node.js开发
                                 <Link to={{ pathname: '/Life/item', state: { id: '1', title: '项目' } }}>《成绩查询后台》</Link>包括oAuth2.0认证和SHA1加密认证。
                             </Timeline.Item>
-                            <Timeline.Item><div>2018-12  <Tag color="geekblue">实习</Tag></div>投了几分简历，最后选择去《绿盟科技》实习。可能是因为工作室学长之前在绿盟实现过，所以对这家公司比较有好感吧
+                            <Timeline.Item><div>2018-12  <Tag color="red">实习</Tag></div>投了几分简历，最后选择去《绿盟科技》实习。可能是因为工作室学长之前在绿盟实现过，所以对这家公司比较有好感吧
                             </Timeline.Item>
-                            <Timeline.Item><div>2018-1  <Tag color="geekblue">实习</Tag></div>Vue版本内部组件库的构建
+                            <Timeline.Item><div>2018-1  <Tag color="red">实习</Tag></div>
+                                <Link to={{ pathname: '/Life/item', state: { id: '1', title: '项目' } }}>Vue版本内部组件库的构建</Link>在内部Angular.js组件库基础上，进行技术栈的迁移。
                             </Timeline.Item>
-                            <Timeline.Item><div>2018-2  <Tag color="geekblue">实习</Tag></div>学习React,并参与React大屏模板开发
+                            <Timeline.Item><div>2018-3  <Tag color="red">实习</Tag></div>使用Echarts等可视化工具，进行
+                                <Link to={{ pathname: '/Life/item', state: { id: '1', title: '项目' } }}>可视化大屏模板开发</Link>基于React
+                            </Timeline.Item>
+                            <Timeline.Item><div>2018-3  <Tag color="red">前端</Tag></div>使用React+Redux+Antd初步完成
+                                <Link to={{ pathname: '/Life/item', state: { id: '1', title: '项目' } }}>个人博客前端界面</Link>
+                            </Timeline.Item>
+                            <Timeline.Item><div>... <Tag color="red">未来</Tag></div>学无止境
                             </Timeline.Item>
                         </Timeline>
                     </div>

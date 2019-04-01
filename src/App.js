@@ -5,7 +5,6 @@
 * @Date: 2019-03-18 17:46:14
 */
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Home from './pages/Home'
 
 function App(props) {

@@ -1,7 +1,6 @@
 import React from 'react';
 import Spin from '../../../../components/spin'
 import { Icon, Tag } from 'antd'
-import classes from  './index.css'
 const label = {
 	'first': '前端',
 	'end': '后端',

@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col, PageHeader, BackTop, Empty,Tag,Icon } from 'antd';
 import { connect } from 'react-redux'
 import { getArticleList, getArticle, delArticle, delArticleList} from '../../../redux/actions/blog'
+import Spin from '../../../components/spin'
 import classes from  './index.css'
 
 class LifeItem extends React.Component {
@@ -71,15 +72,10 @@ class LifeItem extends React.Component {
 						<h1 style={{ fontWeight: 700, lineHeight: 1.5,padding:'10px',color:'#fc550e',borderBottom:'solid 1px #cccccc'}}>
 							{this.props.article.title}
 						</h1>
-                        {/* <div style={{width:'100%',height:'50px'}}> */}
-							{/* <div style={{ float: 'right' }}>
-								<Tag color="blue"><Icon type="contacts" />11 </Tag>
-								<Tag color="geekblue"><Icon type="tag" />22</Tag>
-							</div> */}
-						{/* </div> */}
+
 
                             {txts && <div dangerouslySetInnerHTML={{ __html: txts }} />}
-                            {!txts&&<Empty/>}
+                            {!txts&&<Spin/>}
                                 
                            
 
