@@ -10,7 +10,6 @@ class Work extends React.Component {
         }
     }
 
-
     render() {
         return (
 
@@ -82,7 +81,6 @@ class Work extends React.Component {
                             </Timeline.Item>
                         </Timeline>
                     </div>
-
 
 
                     {/* <Empty /> */}
