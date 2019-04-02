@@ -24,7 +24,7 @@ class Life extends React.Component {
 
     componentDidMount() {
         var _this = this
-        _this.props.getArticleList('first')
+        _this.props.getArticleList('life')
     }
 
     componentWillUnmount() {
