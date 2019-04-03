@@ -45,7 +45,7 @@ class About extends React.Component {
                         </Panel>
                         <Panel header="简历" key="2">
                             <div>
-                                你好啊！欢迎查看<a>我的简历</a> (更新时间：2019.3.30)
+                                你好啊！欢迎查看<a href="http://sun-nocat.xyz/getJianLi">我的简历</a> (更新时间：2019.3.30)
                             </div>
                         </Panel>
 

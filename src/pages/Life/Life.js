@@ -30,7 +30,6 @@ class Life extends React.Component {
     componentWillUnmount() {
         this.props.delArticleList()
 
-        
  }
     render() {
         console.log(this.props.history)

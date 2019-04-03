@@ -8,6 +8,7 @@
 import React from 'react';
 import CardItem from './CardItem';
 import ContentText from './ContentText';
+import Spain from '../../../../components/spin/index'
 
 class Content extends React.Component {
 	constructor(props) {
@@ -67,6 +68,12 @@ class Content extends React.Component {
 		if (isList) {
 			return (
 				<div>
+					{ !articleList &&(
+						<Spain></Spain>
+					)
+					
+					}
+				
                     
 					{articleList &&
 						articleList.map(function(item, index) {
