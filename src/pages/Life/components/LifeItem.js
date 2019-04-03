@@ -29,7 +29,7 @@ class LifeItem extends React.Component {
         }
     }
     change(txt) {
-        return txt.replace(/width:\d+px/g, `width:100%`).replace(/<pre/g, `<pre style="background:#f6f7f8"`).replace(/<img\s/g, `<img style="width:100%"`).replace(/style="/g, `style="width:100%;overflow:scroll;`)
+        return txt.replace(/width:\d+px/g, `width:100%`).replace(/<pre/g, `<pre style="background:#f6f7f8"`).replace(/<img\s/g, `<img style="width:100%"`).replace(/style="/g, `style="width:100%;overflow:auto;`)
     }
 
     componentWillUnmount(){

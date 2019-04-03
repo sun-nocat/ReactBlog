@@ -20,7 +20,7 @@ class ContentText extends React.Component {
 	 * @param {string} txt 未过滤数据
 	 */
 	change(txt) {
-		return txt.replace(/width:\d+px/g, `width:100%`).replace(/<pre/g, `<pre style="background:#f6f7f8"`).replace(/<img\s/g, `<img style="width:100%"`).replace(/style="/g, `style="width:100%;overflow:scroll;`)
+		return txt.replace(/width:\d+px/g, `width:100%`).replace(/<pre/g, `<pre style="background:#f6f7f8"`).replace(/<img\s/g, `<img style="width:100%"`).replace(/style="/g, `style="width:100%;overflow:auto;`)
 	}
 
 	resize(){
@@ -41,8 +41,9 @@ class ContentText extends React.Component {
 		window.addEventListener('resize',this.resize)
 	}
 	render() {
-		console.log(this.props.article.title)
-		console.log(this.props.item.time.split(" ")[0])
+		if(!this.props.item){
+			this.props.history.push('/')
+		}
 		var back = this.props
 		const txt = this.props.article.content
 		if (txt) {
